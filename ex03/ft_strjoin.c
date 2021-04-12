@@ -6,7 +6,7 @@
 /*   By: sohan <sohan@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 03:28:28 by sohan             #+#    #+#             */
-/*   Updated: 2021/04/08 22:35:54 by sohan            ###   ########.fr       */
+/*   Updated: 2021/04/12 23:25:21 by sohan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	i = 0;
 	len_joined = find_len(strs, size);
 	len_joined += (ft_strlen(sep) * (size - 1));
-	str_joined = (char *)malloc(len_joined * sizeof(char) + 1);
+	str_joined = (char *)malloc((len_joined + 1) * sizeof(char));
 	if (str_joined == 0)
 		return (0);
 	else if (size == 0)
@@ -90,7 +90,7 @@ int	main()
 {
 	char *arrs[7] = {"abc","s","efghi","jk","lmno","pqrstu","xyz"};
 	char *sep = "::";
-	int size = 0;
+	int size = 7;
 
 	printf("%s\n", ft_strjoin(size, arrs, sep));
 	return 0;

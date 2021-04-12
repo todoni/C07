@@ -6,7 +6,7 @@
 /*   By: sohan <sohan@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 21:17:39 by sohan             #+#    #+#             */
-/*   Updated: 2021/04/08 01:31:17 by sohan            ###   ########.fr       */
+/*   Updated: 2021/04/12 22:41:13 by sohan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	*ft_range(int min, int max)
 
 	range = max - min;
 	i = 0;
-	array_integer = (int *)malloc(range * sizeof(int));
+	array_integer = (int *)malloc((range + 1) * sizeof(int));
 	if (array_integer == 0 || min >= max)
 		return (0);
 	while (i < range)
@@ -34,8 +34,9 @@ int	*ft_range(int min, int max)
 
 int main()
 {
-	int *array = ft_range(20,10);
+	int *array = ft_range(-10,10);
 	
-	printf("%p\n", array);	
+	for (int i = 0; i< 20; i++)
+		printf("%d ", array[i]);	
 	return 0;
 }

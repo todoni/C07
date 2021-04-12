@@ -6,7 +6,7 @@
 /*   By: sohan <sohan@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 21:13:10 by sohan             #+#    #+#             */
-/*   Updated: 2021/04/11 04:05:52 by sohan            ###   ########.fr       */
+/*   Updated: 2021/04/13 05:29:01 by sohan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 bool	is_seperator(char *charset, char str)
 {
 	if (*charset == '\0')
-		return (str == '\0');
+		return (false);
 	while (*charset)
 	{
 		if (str == *charset)
@@ -38,8 +38,6 @@ long long int	count_word(char *str, char *charset)
 			str++;
 		if (!is_seperator(charset, *(str - 1)))
 			word_count++;
-		if (*str == '\0')
-			break;
 		str++;
 	}
 	return (word_count);
@@ -88,14 +86,14 @@ char	**ft_split(char *str, char *charset)
 		str++;	
 	num_word = count_word(str, charset);
 	word_len = 0;
-	strs = (char **)malloc(num_word * sizeof(char *) + 1);
+	strs = (char **)malloc((num_word + 1) * sizeof(char *));
 	if (strs == 0)
 		return (0);
-	while (i < num_word)
+	while (true)
 	{
 		word_len = count_word_len(str, charset);
 		strs[i] = (char *)malloc(word_len * sizeof(char) + 1);
-		if (strs[i] == 0)
+		if (strs[i] == 0 || str == 0)
 		   return (0);
 		str = put_words(strs, str, charset, i);		
 		i++;
@@ -108,10 +106,10 @@ int	main()
 {
 	int i = 0;
 	char **strs = ft_split("", "");
-	while (strs[i] != 0)
-	{
+	//while (strs[i])
+	//{
 		printf("%s\n", strs[i]);
-		i++;
-	}
+		//i++;
+	//}
 	return 0;
 }
