@@ -99,7 +99,7 @@ char	**ft_split(char *str, char *charset)
 int	main()
 {
 	int i = 0;
-	char **array = ft_split("","");
+	char **array = ft_split("asdfsdf","a");
 	while (array[i])
 	{
 		printf("%s\n",array[i]);
